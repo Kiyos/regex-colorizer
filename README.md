@@ -16,10 +16,15 @@ There is also a `RegexColorizer.colorizeText()` method that returns HTML with hi
 
 See [Regex Colorizer's website](http://stevenlevithan.com/regex/colorizer/) for examples and more details.
 
+## Online Module
+
+`online.html` is a modified `index.html` with an input field. You can open it locally, type in or paste your regular expression and immediately get a colorized version, which you can use however you like. I use it in mini-articles I write for myself in the process of learning regular expressions.
 
 ## About
 
 Regex Colorizer copyright 2010-2012 by [Steven Levithan](http://stevenlevithan.com/).
+
+Online module copyright 2016 by [Yevgeniy Boreesov](https://github.com/Kiyos).
 
 Released under the [MIT License](http://mit-license.org/).
 
