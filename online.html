@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Online Regex Colorizer</title>
+
+    <link id="default-ss" href="./themes/default.css" rel="stylesheet" title="Default">
+    <link id="nobg-ss" href="./themes/nobg.css" rel="alternate stylesheet" title="No BG">
+    <link id="regexpal-ss" href="./themes/regexpal.css" rel="alternate stylesheet" title="RegexPal">
+    <link id="regexbuddy-ss" href="./themes/regexbuddy.css" rel="alternate stylesheet" title="RegexBuddy">
+
+    <style>
+        body {
+            font-family: Calibri, Verdana, Sans-serif;
+            padding: 0 30px 15px 30px;
+            margin: 0;
+        }
+        h1, h2, h3 {
+            font-family: Cambria;
+        }
+        pre.regex {
+            font-family: Consolas, "Courier New", Monospace;
+            border: 1px solid #ddd;
+            display: inline-block;
+            padding: 2px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Online Regex Colorizer</h1>
+
+    <h2>Put your regex below</h2>
+
+    <input class="source"
+           type="text"
+           style="width:400px"
+           onkeyup="transferAndColorize(this.value, 'result')">
+
+    <h2>Select a theme</h2>
+
+    <input type="button" onclick="setTheme('default')" value="Default">
+    <input type="button" onclick="setTheme('nobg')" value="No BG">
+    <input type="button" onclick="setTheme('regexpal')" value="RegexPal">
+    <input type="button" onclick="setTheme('regexbuddy')" value="RegexBuddy">
+        
+    <h2>Observe the result</h2>
+    
+    <pre id="result" class="regex" style="color:grey">(nothing here yet)</pre>
+    
+    <script src="./regex-colorizer.js"></script>
+    <script>
+        function setTheme(name) {
+            var sheets = document.getElementsByTagName('link'), i;
+            for (i = 0; i < sheets.length; i++) {
+                sheets[i].disabled = true;
+            }
+            document.getElementById(name + '-ss').disabled = false;
+        }
+        
+        function transferAndColorize(source_text, target_id) {
+            if (source_text == '') {
+                document.getElementById(target_id).innerHTML = '(nothing here yet)';
+                document.getElementById(target_id).removeAttribute('style');
+                document.getElementById(target_id).setAttribute('style', 'color:grey');
+            }
+            else {
+                document.getElementById(target_id).innerHTML = source_text;
+                document.getElementById(target_id).removeAttribute('style');
+                RegexColorizer.colorizeAll();
+            }
+        }
+    </script>
+</body>
+</html>
